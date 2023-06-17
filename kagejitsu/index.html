@@ -5,40 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Belajar html</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h3>Kage no Jitsuryokusha ni Naritakute</h3>
+    <h3><strong>Kage no Jitsuryokusha ni Naritakute</strong></h3>
 
-    <a href="https://myanimelist.net/manga/115922/Kage_no_Jitsuryokusha_ni_Naritakute?q=kage%20no&cat=manga">
-        <img src="../aset/evfgxhmwyakd54k.webp" alt="Image not found" width="250">
-    </a>
-
-
-    <h3>Alternative name</h3>
-    <p>To Be a Power in the Shadows! / The Eminence in Shadow</p>
-
-    <h4>Author</h4>
-    <p>Aizawa Daisuke</p>
-    
-    <h4>Artist</h4>
-    <p>Touzai</p>
-
-
-    <h4>Genre</h4>
-    <p>Fiction,Fantasy,Dark Fantasy</p>
-
-    <h4>Synopsis</h4>
-    <p>
-        SATU KEBOHONGAN BESAR DAN BEBERAPA KEBENARAN YANG BERPUTAR
-        Bahkan di masa lalunya, impian Cid bukanlah menjadi <abbr title="Protagonis berarti orang yang memainkan bagian pertama atau sering disebut aktor utama">protagonis</abbr> atau bos terakhir.
+    <p id="sinopsis">
+        <a href="https://myanimelist.net/manga/115922/Kage_no_Jitsuryokusha_ni_Naritakute?q=kage%20no&cat=manga">
+            <img src="../aset/kagejitsu_vol1cover.webp" alt="Image not found" title="Volume 1 Cover Book" width="250" align="left">
+        </a>
+        <strong>SATU KEBOHONGAN BESAR DAN BEBERAPA KEBENARAN YANG BERPUTAR</strong>
+        Bahkan di masa lalunya, impian Cid bukanlah menjadi <abbr title="Protagonis berarti orang yang memainkan bagian pertama atau sering disebut aktor utama">Protagonis</abbr> atau bos terakhir.
         Dia lebih suka berbohong sebagai karakter kecil sampai waktu utama untuk mengungkapkan bahwa
-        dia adalah dalang … atau setidaknya, lakukan hal terbaik berikutnya - berpura-pura menjadi
+        dia adalah <abbr title="Dalang atau mendalangi yaitu mengatur atau memimpin suatu gerakan dengan sembunyi-sembunyi. Source: kbbi.web.id">Dalang</abbr> … atau setidaknya, lakukan hal terbaik berikutnya - berpura-pura menjadi
         salah satunya! Dan sekarang setelah dia terlahir kembali ke dunia lain, dia siap untuk menetapkan
         kondisi yang sempurna untuk mewujudkan impiannya sepenuhnya. Dipersenjatai dengan imajinasinya yang terlalu
         aktif, Cid dengan bercanda merekrut anggota ke organisasinya dan membuat seluruh cerita latar tentang
         sekte jahat yang perlu mereka singkirkan. Yah, semoga beruntung, musuh Imajinasinya ini ternyata
         benar-benar nyata - dan semua orang tahu yang sebenarnya kecuali dia!
     </p>
+
+    <!-- <br><br><br><br><br><br><br><br> -->
+    <br><br>
+    <table>
+        <tr>
+            <td>Alternative Name</td>
+            <td>The The Eminence in Shadow</td>
+        </tr>
+
+        <tr>
+            <td>Author</td>
+            <td>Aizawa Daisuke</td>
+        </tr>
+
+        <tr>
+            <td>Artist</td>
+            <td>Touzai</td>
+        </tr>
+
+        <tr>
+            <td>Genre</td>
+            <td>Fiction,Fantasy,Dark Fantasy</td>
+        </tr>
+        
+
+    </table>
 
     <br>
     <h3><a href="vol1.html">Volume 1</a></h3>
@@ -47,19 +58,19 @@
         Ol adalah sebuah list yang terurut
         Ol memiliki beberapa tipe yaitu A,a,I,i,1
     -->
-    <ol type="1"> 
-        <li><a href="vol1.html#prolog">Prolog : Mempersiapkan panggung yang sempurna!</a></li>
-        <li><a href="vol1.html#chapter1">Chapter 1 : Memulai pelatihan Shadowbroker</a></li>
-        <li><a href="vol1.html#chapter2">Chapter 2 : Mengasumsikan Peran Karakter Sampingan di Sekolah!</a></li>
-        <li><a href="vol1.html#chapter3">Chapter 3 : Resmi , Aku Memulai sebagai Dalang Yang Beraksi! Bagian 1</a></li>
-        <li><a href="vol1.html#chapter4">Chapter 4 : Resmi , Aku Memulai sebagai Dalang Yang Beraksi! Bagian 2</a></li>
+    <ul>
+        <li><a class="chapter" href="vol1.html#prolog">Prolog : Mempersiapkan panggung yang sempurna!</a></li>
+        <li><a class="chapter" href="vol1.html#chapter1">Chapter 1 : Memulai pelatihan Shadowbroker</a></li>
+        <li><a class="chapter" href="vol1.html#chapter2">Chapter 2 : Mengasumsikan Peran Karakter Sampingan di Sekolah!</a></li>
+        <li><a class="chapter" href="vol1.html#chapter3">Chapter 3 : Resmi , Aku Memulai sebagai Dalang Yang Beraksi! Bagian 1</a></li>
+        <li><a class="chapter" href="vol1.html#chapter4">Chapter 4 : Resmi , Aku Memulai sebagai Dalang Yang Beraksi! Bagian 2</a></li>
         <li>Chapter 5 : Dua Sisi Shadow Garden ?!</li>
         <li>Chapter 6 : Menguasai Kehidupan Damai dari Tak Seorang Pun!</li>
         <li>Chapter 7 : Adegan Di Mana Teroris Mengambil Alih Sekolah</li>
         <li>Final Chapter : Ideku tentang Komandan Shadow Tertinggi!</li>
         <li>Extra Chapter : Catatan Kejadian Master Shadow Lengkap</li>
         <li>Penutup</li>
-    </ol>
+    </ul>
 
     <h3>Volume 2</h3>
 
@@ -67,7 +78,7 @@
         Ul adalah tag list yang tidak terurut.
         Tag ol memiliki beberapa tipe seperti: disc, square, circle
     -->
-    <ul type="square">
+    <ul>
         <li>Prolog : Untuk Lindwurm, Tanah Suci!</li>
         <li>Chapter 1 : Saat-saat Menyenangkan di Ujian Dewi!</li>
         <li>Chapter 2 : Menyelidiki Tempat Suci!</li>
@@ -81,18 +92,25 @@
         <li>Penutup </li>
     </ul>
 
-    
-    <!-- <audio controls autoplay loop src="aset/Tower_of_Flower-Sayuri.mp4">Tower of Flower</audio> -->
-    <audio controls autoplay loop>
-        <source src="aset/Tower_of_Flower-Sayuri.mp3">
-        <source src="aset/Setsuna_no_Chikai.mp3">
-        Error
-    </audio>
+    <br><br>
 
+    <p>
+        <b>Quote:</b> <br>
+        <q>Bermimpilah dalam hidup, jangan hidup dalam mimpi</q>
+    </p>
 
-    <h6><a href="../index.html">Kembali ke halaman utama</a></h6>
+    <hr/>
+    <button class="button"><a href="../index.html">Home</a></button>
 </body>
 </html>
+
+
+<!-- 
+    dfn
+    cite
+    del
+    ins
+ -->
 
 <!-- <!DOCTYPE html>
 <html lang="en">
