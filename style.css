@@ -4,11 +4,12 @@ body {
 
 .main-title { font-size: 30px; }
 
-
-.quote { font-style: italic; }
+.bottom {
+    font-style: italic;
+}
 
 .link {
-    font-size: 15px;
+    font-size: 17px;
 }
 
 a {
@@ -26,8 +27,4 @@ a:hover {
 
 a:visited {
     color: blue;
-}
-
-h4 {
-    font-style: italic;
 }
