@@ -1,0 +1,74 @@
+.top {
+    margin-bottom: 15px;
+    /* border: 7px solid black; */
+}
+
+.top h3 {
+    text-align: center;
+    font-size: 30px;
+}
+
+
+/* 
+
+
+
+
+
+*/
+.content a {
+    text-decoration: none;
+}
+
+.content a:active {
+    font-size: 17px;
+    color: dodgerblue;
+}
+
+.content a:visited {
+    color: blue;
+}
+
+.content table {
+    margin: auto;
+    text-align: center;
+    width: 80%;
+    font-size: 20px;
+    border: 5px solid blue;
+}
+
+.content table td {
+    /* font-size: 20px; */
+    word-spacing: 4px;
+    letter-spacing: 1px;
+    padding-top: 3px;
+    padding-left: 5px;
+    padding-bottom: 3px;
+}
+
+.title {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+/* 
+
+
+
+
+
+*/
+.bottom {
+    padding: 10px;
+    margin-top: 15px;
+    /* border: 7px solid black; */
+}
+
+.bottom button{
+    padding: 10px;
+    font-size: 20px;
+    background-color: green;
+}
+
+.bottom a:visited, .bottom a:active{
+    color: white;
+}
