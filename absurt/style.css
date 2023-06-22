@@ -1,0 +1,15 @@
+.circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: royalblue;
+}
+
+/* .circle:hover {
+    rotate: 1740;
+} */
+
+.circle h6 {
+    text-align: center;
+    line-height: 200px;
+}

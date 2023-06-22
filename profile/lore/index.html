@@ -27,28 +27,24 @@
     </form> -->
 
 
-    <div class="login-form">
-        <table border="0">
-            <tbody>
-                <tr><td rowspan="3"><h2>Login</h2></td></tr>
-
-                <div class="login-form-input">
-                    <tr>
-                        <td><label for="username">Username:</label></td>
-                        <td><input type="text" required></td>
-                        <td rowspan="2">
-                            <button type="submit">Submit</button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td><label for="password">Password:</label></td>
-                        <td><input type="password" required></td>
-                    </tr>
-                </div>
-
-            </tbody>
-        </table>
+    <div class="login-form-container">
+        <div class="login-form">
+        <form action="../index.php" method="post">
+        <table>
+                <tr>
+                    <td><label class="inla" for="username">Username:</label></td>
+                    <td><input class="inla" id="username" type="text" required></td>
+                    <td rowspan="2">
+                        <button type="submit" name="submit">Submit</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="inla" for="password">Password:</label></td>
+                    <td><input class="inla" id="password" type="password" required></td>
+                </tr>
+            </table>
+        </form>
+        </div>
     </div>
 
     <div class="register-form">
