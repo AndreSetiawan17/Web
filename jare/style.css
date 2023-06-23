@@ -1,75 +1,43 @@
-.top {
-    margin-bottom: 15px;
-    /* border: 7px solid black; */
-}
-
-.top h3 {
-    text-align: center;
-    font-size: 30px;
-}
+.cf:before,.cf:after {content: " ";display: table;}.cf:after {clear: both;}.cf {*zoom: 1;}
 
 
-/* 
-
-
-
-
-
-*/
-.content a {
-    text-decoration: none;
-}
-
-.content a:active {
-    font-size: 17px;
-    color: dodgerblue;
-}
-
-.content a:visited {
-    color: blue;
-}
-
-.content table {
+.header {
+    border: 10px solid black;
     text-align: center;
     margin: auto;
     width: 80%;
-    font-size: 20px;
-    border-radius: 10px;
-    border: 5px solid blue;
+    margin-bottom: 10px;
 }
 
-.content table td {
-    /* font-size: 20px; */
-    letter-spacing: 1px;
-    word-spacing: 4px;
-    padding-top: 3px;
-    padding-left: 5px;
-    padding-bottom: 3px;
+.table {
+    margin-top: 20px;
 }
 
-.title {
-    font-family: Arial, Helvetica, sans-serif;
+.table table {
+    border: 10px solid green;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+    font-size: 25px;
+    width: 80%;
+}
+
+.table table .title {
     text-align: left;
 }
-/* 
 
-
-
-
-
-*/
-.bottom {
-    padding: 10px;
-    margin-top: 15px;
-    /* border: 7px solid black; */
+.table table td {
+    padding: 5px;
 }
 
-.bottom button{
-    padding: 10px;
-    font-size: 20px;
-    background-color: green;
+.tava {
+    padding: 5px;
 }
 
-.bottom a:visited, .bottom a:active{
-    color: white;
+.nav-but {
+    /* background-color: aqua; */
+    text-align: center;
+    margin: auto;
+    width: 100px;
+    height: 20px;
 }

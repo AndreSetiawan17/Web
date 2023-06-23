@@ -1,23 +1,17 @@
 <?php
-require "../function.php";
-require "../koneksi.php";
+require __DIR__ . "/../function.php";
+require __DIR__ . "/../koneksi.php";
 
 
-// $conn = mysqli_connect("localhost", "andre", "inIpassword@1","mydb");
-$hari = ["Senin","Selasa","Rabu","Kamis","Jum'at","Sabtu","Minggu"];
+$db = "jare";
 
-$jadwal = query("SELECT * FROM jare");
-
+$query = "INSERT INTO $db (title) VALUES ('Ini Judul2') ";
 
 
 
-$count = [];
-foreach ( $jadwal as $j ) {
-    $count[] = strtolower($hari[$j["day"]]);
-} $count = array_count_values($count);
+mysqli_query($conn,$query);
 
 
 
 
-
-?>
+echo "\n";?>

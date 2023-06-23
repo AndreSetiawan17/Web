@@ -1,7 +1,5 @@
 <?php 
-
-
-function query($text) {
+function extrax($text) {
     global $conn;
     $result = mysqli_query($conn,$text);
     $arr = [];
