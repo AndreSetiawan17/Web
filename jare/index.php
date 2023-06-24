@@ -1,101 +1,102 @@
-<?php 
-require __DIR__ . "/../koneksi.php";
+<?php
 require __DIR__ . "/../function.php";
+require __DIR__ . "/../koneksi.php";
+require "crud.php";
+require "conf.php";
 
-$data = extrax("SELECT * FROM jare");
+$days = ["None","Senin","Selasa","Rabu","Kamis","Jum'at","Sabtu","Minggu"];
+crud($_POST);
 
 
 
-
-
+echo "POST -->";var_dump($_POST);echo "<br><br>";echo "GET -->";var_dump($_GET);
 ?>
-
-
-
-<?php
-// Menentukan musim sesuai dengan bulan
-$musim = match (intval(date("n"))) {
-    3 , 4 , 5  => "Spring" ,
-    6 , 7 , 8  => "Summer" ,
-    9 , 10, 11 => "Fall"   ,
-    12, 1 , 2  => "Winter" ,
-    default    => "Error"  ,
-};?>
-<?php
-// Table strukture
-$days = ["Senin","Selasa","Rabu","Kamis","Jum'at","Sabtu","Minggu"];
-$count = [];
-foreach ( $data as $d ) {
-    $count[] = $days[$d["day"]]; } 
-$count = array_count_values($count);
-
-$senin  = [];
-$selasa = [];
-$rabu   = [];
-$kamis  = [];
-$jumat  = [];
-$sabtu  = [];
-$minggu = [];
-
-foreach ( $data as $d ) {
-    if     ( $d["day"] == 0 ) { $senin [] = $d; }
-    elseif ( $d["day"] == 1 ) { $selasa[] = $d; }
-    elseif ( $d["day"] == 2 ) { $rabu  [] = $d; }
-    elseif ( $d["day"] == 3 ) { $kamis [] = $d; }
-    elseif ( $d["day"] == 4 ) { $jumat [] = $d; }
-    elseif ( $d["day"] == 5 ) { $sabtu [] = $d; }
-    elseif ( $d["day"] == 6 ) { $minggu[] = $d; } 
-} $haries = [$senin, $selasa, $rabu, $kamis, $jumat, $sabtu, $minggu]; ?>
-
-
-
+<!-- 
+    Agar memastikan data yang ditampilkan adalah data yang terbaru,
+    penambilan data dari database harus berada dibagian yang paling bawah
+-->
+<?php $table = extrax("SELECT * FROM $table_dbname"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jadwal rilis</title>
+    <title>Create, Update, Delete</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <div class="header"><h1>Jadwal Rilis Anime <?= $musim . " "; echo date("Y")?></h1></div>
+    <div class="header"><h1>CRUD</h1></div>
 
-    <div class="content">
-        <div class="nav-but">
-            <h6><form action="crud/index.php" method="post"><button>Modive</button></form></h6>
-        </div>
+    <div class="container">
+        <table border="10px">
+            <tr>
+                <th class="tava">ID</th> <!-- tava -> Table Value -->
+                <th class="tava">Judul</th>
+                <th class="tava">Hari</th>
+                <th class="tava">Jam</th>
+                <th class="tava">Source</th>
+                <th class="tava">Action</th>
+            </tr>
 
-        <div class="table">
-            <table border="10px">
-                <tr>
-                    <th class="tava">Hari</th> <!-- tava -> Table Value -->
-                    <th class="tava">Judul</th>
-                    <th class="tava">Jam</th>
-                    <th class="tava">Source</th>
-                </tr>
+            <div class="add">
+                <form action="" method="post">
+                    <tr>
+                        <td><label for="id">Auto</label></td>
+                        <td><input  class="title"  type="text" name="title" required></td>
+                        <td>
+                            <select name="day" id="day">
+                                <?php foreach ( $days as $d ) : ?>
+                                    <option value="<?=$d?>"><?=$d?></option>
+                                <?php endforeach ?>
+                            </select>
+                        </td>
+                        <td><input  class="time"   type="text" name="time"  ></td>
+                        <td><input  class="source" type="text" name="source"></td>
+                        <td><button class="but-add" type="submit" name="add">add</button></td>
+                    </tr>
+                </form>
+            </div>
 
-                <?php foreach ( $haries as $dey) :?>
-                    <?php if ( count($dey) < 1 ) { continue;} ?>
-                    <tr><td rowspan="<?= count($dey) + 1?>"><?= $days[$dey[0]["day"]]; ?></td></tr>
+            <div class="change">
+                <form action="" method="post">
+                    <tr>
+                        <td><input  class="id"     type="text" name="id"    required></td>
+                        <td><input  class="title"  type="text" name="title" ></td>
+                        <td>
+                            <select name="day" id="day">
+                                <?php foreach ( $days as $d ) : ?>
+                                    <option value="<?=$d?>"><?=$d?></option>
+                                <?php endforeach ?>
+                            </select>
+                        </td>
+                        <td><input  class="time"   type="text" name="time"  ></td>
+                        <td><input  class="source" type="text" name="source"></td>
+                        <td><button class="but-change" type="submit" name="change">change</button></td>
+                    </tr>
+                </form>
+            </div>
 
-                    <?php if ( count($dey) > 0 ) {foreach ( $dey as $i ) { ?>
+
+            <!-- Menampilkan Data -->
+            <?php if ( !empty($table) ) {?>
+                <?php foreach ( $table as $dt ) :?>
+                    <form action="" method="post">
                         <tr>
-                            <td class="title"><?= $i["title"]?></td>
-                            <td class="tava"><?php if ( isset($i["time"]) ) { echo $i["time"]; } else { echo "-"; } ?></td>
-                            <td class="tava"><?php if ( isset($i["source"]) ) { echo $i["source"]; } else { echo "-"; } ?></td>
+                            <td><?=              $dt["id"    ] ?></td>
+                            <td class="title"><?=$dt["title" ] ?></td>
+                            <td><?php if ( isset($dt["day"   ]) ) { echo $dt["day"   ]; } else { echo "-"; } ?></td>
+                            <td><?php if ( isset($dt["time"  ]) ) { echo $dt["time"  ]; } else { echo "-"; } ?></td>
+                            <td><?php if ( isset($dt["source"]) ) { echo $dt["source"]; } else { echo "-"; } ?></td>
+                            <input type="hidden" name="action" value="delete">
+                            <input type="hidden" name="id" value="<?= $dt["id"] ?>">
+                            <td><button class="but-del" type="submit" name="delete">delete</button></td>
                         </tr>
-                    <?php }}?>
+                    </form>
                 <?php endforeach ?>
-            </table>
-        </div>
-
-
-
-
-
-
+                <!-- Jika tidak ada item didalam database -->
+                <?php } else { echo "<tr><td colspan=6><h1 class=note>Empty</h5></td></tr>"; } ?>
+        </table>
     </div>
 </body>
 </html>

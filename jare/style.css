@@ -1,43 +1,50 @@
-.cf:before,.cf:after {content: " ";display: table;}.cf:after {clear: both;}.cf {*zoom: 1;}
+body { font-family: Arial, Helvetica, sans-serif;}
+
+.note {
+    background-color: red;
+    margin: auto;
+    padding: 20px;
+}
+
+p {
+    margin: 0;
+    width: 400px;
+}
 
 
 .header {
-    border: 10px solid black;
+    background-color: aqua;
     text-align: center;
     margin: auto;
-    width: 80%;
-    margin-bottom: 10px;
+    width: 170px;
+    border-radius: 20px;
 }
 
-.table {
-    margin-top: 20px;
-}
 
-.table table {
-    border: 10px solid green;
+
+.container table {
     text-align: center;
     margin: auto;
-    margin-top: 10px;
-    font-size: 25px;
-    width: 80%;
 }
 
-.table table .title {
+.container .title {
     text-align: left;
 }
 
-.table table td {
-    padding: 5px;
-}
 
-.tava {
-    padding: 5px;
-}
+button { width: 100%; }
+.but-del    { background-color: red; }
+.but-add    { background-color: lime; }
+.but-change { background-color: yellow; }
 
-.nav-but {
-    /* background-color: aqua; */
-    text-align: center;
-    margin: auto;
-    width: 100px;
-    height: 20px;
-}
+
+/* input {
+    background-color: aqua;
+} */
+
+
+input.id    { width: 40px;  }
+input.title { width: 400px;  }
+input.day   { width: 80px;  }
+input.time  { width: 70px;  }
+input.source{ width: 100px; } 
