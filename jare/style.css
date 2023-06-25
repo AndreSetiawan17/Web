@@ -27,24 +27,18 @@ p {
     margin: auto;
 }
 
-.container .title {
-    text-align: left;
-}
+.container .title { text-align: left; }
 
-
-button { width: 100%; }
-.but-del    { background-color: red; }
-.but-add    { background-color: lime; }
+button      { width: 100%; }
+.but-del    { background-color: red   ; }
+.but-add    { background-color: lime  ; }
 .but-change { background-color: yellow; }
+.but-search { background-color: blue  ; }
 
 
-/* input {
-    background-color: aqua;
-} */
-
-
-input.id    { width: 40px;  }
-input.title { width: 400px;  }
-input.day   { width: 80px;  }
-input.time  { width: 70px;  }
-input.source{ width: 100px; } 
+input.id         { width: 40px ;  }
+input.title      { width: 400px;  }
+input.day        { width: 80px ;  }
+input.time       { width: 70px ;  }
+input.source     { width: 100px;  } 
+input.search-bar { width: 100% ;  }

@@ -1,6 +1,7 @@
 <?php
-require __DIR__ . "/../koneksi.php";
-require __DIR__ . "/conf.php";
+// require __DIR__ . "/../koneksi.php";
+// require __DIR__ . "/../function.php";
+// require __DIR__ . "/conf.php";
 
 function crud($data) {
     global $table_dbname, $conn;
@@ -29,8 +30,8 @@ function crud($data) {
 
     // Update
     elseif ( isset($data["change"]) ) {
-        $id = $data["id"];
-
+        
+        $id     = htmlspecialchars($data["id"]);
         $title  = htmlspecialchars($data["title" ]);
         $day    = htmlspecialchars($data["day"   ]);
         $time   = htmlspecialchars($data["time"  ]);
@@ -51,5 +52,16 @@ function crud($data) {
         $id = $data["id"];
         mysqli_query($conn,"DELETE FROM $table_dbname WHERE id = $id");
     }
+
+    if ( isset($data["search"]) && strlen($data["search-bar"] > 0) ) {
+        $keyword = $data["search-bar"];
+        $query = "SELECT * FROM $table_dbname WHERE
+            id LIKE '%$keyword%' OR
+            title LIKE '%$keyword%' OR
+            day LIKE '%$keyword%' OR
+            time LIKE '%$keyword%' OR
+            source LIKE '%$keyword%'
+    ";      return extrax("$query");
+    } else{ return extrax("SELECT * FROM $table_dbname"); }
 }
 ?>

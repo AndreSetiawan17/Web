@@ -1,5 +1,5 @@
 <?php
-$table_dbname = "jare";
+$table_dbname = "alpha";
 
 
 
