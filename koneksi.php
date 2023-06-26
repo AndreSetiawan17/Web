@@ -2,7 +2,7 @@
 $host     = "localhost";
 $username = "andre";
 $password = "inIpassword@1";
-$database = "mydb";
+$database = "PersonalWebsite";
 
 $conn = mysqli_connect($host, $username, $password, $database);
 if (!$conn) {
