@@ -1,3 +1,9 @@
 .hide/
-jare/.trash/
+vendor/
+progile/
+
+
+.env
 koneksi.php
+composer.json
+composer.lock

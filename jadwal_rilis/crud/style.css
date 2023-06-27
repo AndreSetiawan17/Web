@@ -1,0 +1,44 @@
+body { font-family: Arial, Helvetica, sans-serif;}
+
+.note {
+    background-color: red;
+    margin: auto;
+    padding: 20px;
+}
+
+p {
+    margin: 0;
+    width: 400px;
+}
+
+
+.header {
+    background-color: aqua;
+    text-align: center;
+    margin: auto;
+    width: 170px;
+    border-radius: 20px;
+}
+
+
+
+.container table {
+    text-align: center;
+    margin: auto;
+}
+
+.container .title { text-align: left; }
+
+button      { width: 100%; }
+.but-del    { background-color: red   ; }
+.but-add    { background-color: lime  ; }
+.but-change { background-color: yellow; }
+.but-search { background-color: blue  ; }
+
+
+input.id         { width: 40px ;  }
+input.title      { width: 400px;  }
+input.day        { width: 80px ;  }
+input.time       { width: 70px ;  }
+input.source     { width: 100px;  } 
+input.search-bar { width: 100% ;  }

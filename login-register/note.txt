@@ -1,0 +1,3 @@
+Menambahkan pesan ketika berhasil
+Misalnya pada register dan login
+Use JavaScript

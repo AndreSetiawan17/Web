@@ -1,0 +1,43 @@
+.cf:before,.cf:after {content: " ";display: table;}.cf:after {clear: both;}.cf {*zoom: 1;}
+
+
+.header {
+    border: 10px solid black;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.table {
+    margin-top: 20px;
+}
+
+.table table {
+    border: 10px solid green;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+    font-size: 25px;
+    width: 80%;
+}
+
+.table table .title {
+    text-align: left;
+}
+
+.table table td {
+    padding: 5px;
+}
+
+.tava {
+    padding: 5px;
+}
+
+.nav-but {
+    /* background-color: aqua; */
+    text-align: center;
+    margin: auto;
+    width: 100px;
+    height: 20px;
+}

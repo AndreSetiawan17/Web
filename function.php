@@ -5,7 +5,7 @@ function extrax($text) {
     $arr = [];
 
     while ( $i = mysqli_fetch_assoc($result)) {
-    $arr[] = $i;
+        $arr[] = $i;
     }
 
     return $arr;

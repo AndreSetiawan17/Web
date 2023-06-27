@@ -6,14 +6,14 @@ require "../lorefunc.php";
 if ( isset($_POST["register"]) ) { $error = register($_POST);}
 
 
-echo "Error code -> ";
-var_dump($error);
-echo "<br><br>";
+// echo "Error code -> ";
+// var_dump($error);
+// echo "<br><br>";
 
-// Pada saat menekan bagian bukan label / radio button atau (div) saja, maka gender tidak akan dipilih. Untuk mengatasinya akan digunakan javascript
-// Pada gender manambahkan opsi ketiga yaitu tidak ingin memberitahu
-echo "POST -> ";
-var_dump($_POST);
+// // Pada saat menekan bagian bukan label / radio button atau (div) saja, maka gender tidak akan dipilih. Untuk mengatasinya akan digunakan javascript
+// // Pada gender manambahkan opsi ketiga yaitu tidak ingin memberitahu
+// echo "POST -> ";
+// var_dump($_POST);
 ?>
 <?php
 $day   = [];
@@ -85,8 +85,10 @@ for ( $i = date("Y"); $i >= 1900; $i-- ) { $year[] = $i; }
             <div class="submit-button">
                 <button type="submit" name="register">Submit</button>
             </div>
-
         </form>
+
+        <div class="login"><p><a href="../login/">Login?</a></p></div>
+
     </div>
     
 </body>

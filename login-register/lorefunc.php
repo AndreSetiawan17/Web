@@ -1,16 +1,16 @@
 <?php
 // Login / Register Function
-require "conf.php";
+$tusers = $_ENV["TUSERS"];
 
 function register($data) {
-    global $users_data;
+    global $tusers;
     global $conn;
 
     // Update later
     // Error code
     // -1 untuk tidak tahu
-    // -2 untuk password tidak sama
-    // -3 untuk username sudah terdaftar
+    // -2 untuk username sudah terdaftar
+    // -3 untuk password tidak sama
 
     $username = strtolower(stripslashes($data["username"]));
     $email    = mysqli_real_escape_string($conn ,$data["email"]);
@@ -20,7 +20,7 @@ function register($data) {
     $gender   = $data["gender"];
 
 
-    $result = mysqli_fetch_assoc(mysqli_query($conn, "SELECT username FROM $users_data WHERE username = '$username'"));
+    $result = mysqli_fetch_assoc(mysqli_query($conn, "SELECT username FROM $tusers WHERE username = '$username'"));
     if ( !empty($result) ) { return -3; }
 
 
@@ -29,7 +29,7 @@ function register($data) {
     // Enkripsi password
     $password = password_hash($password, PASSWORD_DEFAULT);
     
-    mysqli_query($conn, "INSERT INTO $users_data (username ,email ,password ,gender ,birthday)
+    mysqli_query($conn, "INSERT INTO $tusers (username ,email ,password ,gender ,birthday)
     values (
         '$username', '$email', '$password', '$gender', '$birthday'
     )");
@@ -37,6 +37,38 @@ function register($data) {
 
 }
 
+function login($data) {
+    global $tusers;
+    global $conn;
 
+
+    $username = strtolower($data["username"]);
+    $password = $data["password"];
+
+
+    $result    = mysqli_query($conn, "SELECT * FROM $tusers WHERE username = '$username'");
+    $user_data = mysqli_fetch_assoc($result);
+
+    // -1 tidak tahu
+    // -2 username tidak ada
+    // -3 password salah
+
+    if ( mysqli_num_rows($result) === 1 ) {
+        if (password_verify($password, $user_data["password"]) ) {
+
+            
+
+
+
+
+
+
+            // Upgrade later
+            // echo "<h1>Bisa cuy</h1>";
+            // sleep(5);
+            // header("Location: ../../index.html");
+        }else { echo "Kata sandi salah"; }
+    }else { echo "Error: " . mysqli_error($conn); }
+}
 
 ?>

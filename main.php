@@ -1,11 +1,7 @@
 <?php
-require "koneksi.php";
+require 'vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
-
-$colors = array("red", "green", "blue", "yellow");
-$index = array_search("blue", $colors);
-echo $index; // Output: 2
-
-
-
+var_dump($_ENV["DB_HOST"]);
 ?>
