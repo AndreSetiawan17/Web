@@ -1,10 +1,16 @@
 <?php
 require "../../koneksi.php";
-require "../lorefunc.php";
+require "../func.php";
 
 
-if ( isset($_POST["register"]) ) { $error = register($_POST);}
+if ( isset($_SESSION["login"]) ) { header("Location: ../../"); }
 
+if ( isset($_POST["register"]) ) {
+    $error = register($_POST);
+    if ( $error === 1 ) {
+        header("Location: ../login/");
+    }
+}
 
 // echo "Error code -> ";
 // var_dump($error);

@@ -1,10 +1,35 @@
 <?php
+session_start();
 require "../../koneksi.php";
-require "../lorefunc.php";
+require "../func.php";
 
+if ( isset($_SESSION["login"]) ) { header("Location: ../../"); }
+
+echo '<h1>Yeay1</h1>';
+if ( isset($_POST["login"]) ) {
+    $error = login($_POST);
+
+    if ( $error === 1 ) {
+        header("Location: ../../");
+    }elseif ( $error === -2 ) {
+        echo '<h1>Username tidak ada</h1>';
+    }else {
+        echo $error;
+    }
+}
+
+
+
+echo "Error code -->";
+var_dump($error);
+echo "<br>Post -->";
 var_dump($_POST);
 
-if ( isset($_POST["login"]) ) { $error = login($_POST); }
+
+// Jika user masuk, program akan mencari session
+// dan jika tidak ada website akan ditampilkan dan
+// Jika ada akan dicek pada database dengan mencari pada table SESSION(env) dan 
+// mengecek apakah session dengan key kunci sama dengan session user
 
 ?>
 <!DOCTYPE html>
