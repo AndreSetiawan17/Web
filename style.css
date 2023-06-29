@@ -21,9 +21,9 @@ a:active {
     font-size: 17px;
 }
 
-a:hover {
+/* a:hover {
     font-size: 20px;
-}
+} */
 
 a:visited {
     color: blue;

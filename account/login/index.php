@@ -1,35 +1,18 @@
 <?php
 session_start();
 require "../../koneksi.php";
-require "../func.php";
+require "../../func.php";
 
 if ( isset($_SESSION["login"]) ) { header("Location: ../../"); }
 
 echo '<h1>Yeay1</h1>';
 if ( isset($_POST["login"]) ) {
     $error = login($_POST);
-
-    if ( $error === 1 ) {
-        header("Location: ../../");
-    }elseif ( $error === -2 ) {
-        echo '<h1>Username tidak ada</h1>';
-    }else {
-        echo $error;
-    }
 }
 
-
-
-echo "Error code -->";
-var_dump($error);
 echo "<br>Post -->";
 var_dump($_POST);
 
-
-// Jika user masuk, program akan mencari session
-// dan jika tidak ada website akan ditampilkan dan
-// Jika ada akan dicek pada database dengan mencari pada table SESSION(env) dan 
-// mengecek apakah session dengan key kunci sama dengan session user
 
 ?>
 <!DOCTYPE html>
@@ -42,9 +25,24 @@ var_dump($_POST);
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php if ( isset($_POST["login"]) ) : ?>
+        <?php if ($error === 1) : ?>
+            <script>
+                alert("Login Berhasil!");
+                window.location.href = "../../";
+            </script>
+        <?php elseif ($error === -2) : ?>
+            <script>
+                alert("Username not found!");
+            </script>
+        <?php elseif ($error === -3) : ?>
+            <script>alert("Password salah!");</script>
+        <?php else : ?>
+            <script>alert("Error tidak diketahui. Error Code: <?php echo $error;?>");</script>
+        <?php endif; ?>
+        <?php //echo "<br>Error code"; var_dump($error); ?>
+    <?php endif ?>
 
-    <!-- Pada input username dan password teks placeholder sedikit dipindah kearah kanan -->
-    
     <div class="container">
 
         <h1>Login</h1>
@@ -73,4 +71,6 @@ var_dump($_POST);
     </div>
 
 </body>
+
+
 </html>

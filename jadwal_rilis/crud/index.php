@@ -1,14 +1,13 @@
 <?php
+session_start();
+
 require "../../function.php";
 require "../../koneksi.php";
+require "../../func.php";
 require "crud.php";
 
+verify("../../");
 $table_dbname = $_ENV["JADWAL"];
-
-
-echo "Location";
-echo __DIR__;
-echo "<br>";
 
 if ( isset($_POST["about"]) ) { echo "Teleport to About <br>" ; }
 
@@ -18,8 +17,6 @@ echo "POST -->";var_dump($_POST);echo "<br>";echo "GET -->";var_dump($_GET);echo
 <?php
 // Eksport & Import
 if (isset($_POST["eksport"])) {
-    // Thanks GPT3
-
     // Nama file yang akan diunduh
     $filename = "data.json";
 

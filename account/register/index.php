@@ -1,15 +1,12 @@
 <?php
 require "../../koneksi.php";
-require "../func.php";
+require "../../func.php";
 
 
 if ( isset($_SESSION["login"]) ) { header("Location: ../../"); }
 
 if ( isset($_POST["register"]) ) {
     $error = register($_POST);
-    if ( $error === 1 ) {
-        header("Location: ../login/");
-    }
 }
 
 // echo "Error code -> ";
@@ -39,6 +36,18 @@ for ( $i = date("Y"); $i >= 1900; $i-- ) { $year[] = $i; }
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <?php if ( $error === 1) : ?>
+        <script>
+            alert("Berhasil mendaftar!");
+            window.location.href = "../../"
+        </script>
+    <?php elseif ( $error === -2 ) : ?>
+        <script>alert("Username Sudah Terdaftar!");</script>
+    <?php elseif ( $error === -3 ) : ?>
+        <script>alert("Password Tidak Sama!");</script>
+    <?php endif ?>
+
     <br><br><br>
 
     <div class="container">
