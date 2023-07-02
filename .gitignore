@@ -4,6 +4,7 @@ progile/
 
 
 .env
+note.txt
 koneksi.php
 composer.json
 composer.lock

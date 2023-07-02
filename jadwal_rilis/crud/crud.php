@@ -1,4 +1,6 @@
 <?php
+$table_dbname = $_ENV["JADWAL"];
+
 function crud($data) {
     global $table_dbname, $conn;
     // Mengatasi input misal title jika lebih dari 255 ....| dan source jika lebih 20 ...
@@ -49,15 +51,22 @@ function crud($data) {
         mysqli_query($conn,"DELETE FROM $table_dbname WHERE id = $id");
     }
 
-    if ( isset($data["search"]) && strlen($data["search-bar"] > 0) ) {
-        $keyword = $data["search-bar"];
-        $query = "SELECT * FROM $table_dbname WHERE
-            id LIKE '%$keyword%' OR
-            title LIKE '%$keyword%' OR
-            day LIKE '%$keyword%' OR
-            time LIKE '%$keyword%' OR
-            source LIKE '%$keyword%'
-    ";      return extrax("$query");
-    } else{ return extrax("SELECT * FROM $table_dbname"); }
+    // if ( isset($data["search"]) && strlen($data["search-bar"] > 0) ) {
+    //     $keyword = $data["search-bar"];
+    //     $query = "SELECT * FROM $table_dbname WHERE
+    //         id LIKE '%$keyword%' OR
+    //         title LIKE '%$keyword%' OR
+    //         day LIKE '%$keyword%' OR
+    //         time LIKE '%$keyword%' OR
+    //         source LIKE '%$keyword%'
+    // ";      return extrax("$query");
+    // } else{ return extrax("SELECT * FROM $table_dbname"); }
+
+    // AJAX
+}
+
+function ajax() {
+    global $table_dbname;
+    return extrax("SELECT * FROM $table_dbname");
 }
 ?>
