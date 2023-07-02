@@ -1,14 +1,13 @@
 <?php
 session_start();
 
+require "../../function.php";
 require "../../koneksi.php";
 require "../../func.php";
 require "crud.php";
 
 verify("../../");
-
-// $table_dbname = $_ENV["JADWAL"];
-crud($_POST);
+$table_dbname = $_ENV["JADWAL"];
 
 if ( isset($_POST["about"]) ) { echo "Teleport to About <br>" ; }
 
@@ -26,7 +25,7 @@ if (isset($_POST["eksport"])) {
     header("Content-Disposition: attachment; filename=\"$filename\"");
 
     // Menghasilkan data JSON
-    $json = json_encode($data);
+    $json = json_encode($table);
 
     // Menulis data JSON ke output
     echo $json;
@@ -62,7 +61,7 @@ if (isset($_POST["eksport"])) {
 <?php
 // Pengambilan data harus berada dibawah, agar ketika terjadi perubahan pada database, table tetap mendapatkan data terbaru
 $days = ["None","Senin","Selasa","Rabu","Kamis","Jum'at","Sabtu","Minggu"];
-$data = ajax();
+$table = crud($_POST);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,14 +71,14 @@ $data = ajax();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create, Read, Update, Delete</title>
     <link rel="stylesheet" href="style.css">
-    <!-- <script src="script.js"></script> -->
 </head>
 <body>
     <div class="header"><h1>CRUD</h1></div>
 
     <div class="container">
+        <table border="10px">
+
         <div class="navigation">
-            <table border="10px">
                 <form action="" method="post" enctype="multipart/form-data">
                     <tr>
                         <td colspan="2"><button class="but-none" type="submit" name="none">none</button></td>
@@ -98,12 +97,12 @@ $data = ajax();
                                 const fileInput = document.getElementById('fileInput');
 
                                 browseButton.addEventListener('click', () => {
-                                    fileInput.click();
+                                  fileInput.click();
                                 });
 
                                 fileInput.addEventListener('change', () => {
-                                    // Lakukan tindakan apa pun yang diinginkan setelah memilih file
-                                    console.log(fileInput.files);
+                                  // Lakukan tindakan apa pun yang diinginkan setelah memilih file
+                                  console.log(fileInput.files);
                                 });
                             </script>
                         </td>
@@ -113,30 +112,17 @@ $data = ajax();
                         <td><button class="but-reload" type="submit" name="refresh">refresh</button></td>
                     </tr>
                 </form>
-        </div>
+            </div>
 
             <div class="search">
                 <form action="" method="post">
                     <tr>
-                        <td colspan="5"><input id="keyword" class="search-bar" type="text" name="search-bar" placeholder="Search" autocomplete="off"></td>
-                        <!-- <td><button class="but-search" type="submit" name="search">search</button></td> -->
-                        <td>
-                            <select name="search-by" id="search-by">
-                                <option value="all">All</option>
-                                <option value="id">ID</option>
-                                <option value="title">Judul</option>
-                                <option value="day">Hari</option>
-                                <option value="hour">Jam</option>
-                                <option value="date">Tanggal</option>
-                                <option value="source">Source</option>
-                            </select>
-                        </td>
+                        <td colspan="5"><input class="search-bar" type="text" name="search-bar"></td>
+                        <td><button class="but-search" type="submit" name="search">search</button></td>
                     </tr>
                 </form>
             </div>
-        </table>
 
-        <table border="10px" id="data">
             <div class="table-header">
                 <tr>
                     <th class="tava">ID</th> <!-- tava -> Table Value -->
@@ -155,7 +141,7 @@ $data = ajax();
                         <td><label for="id">Auto</label></td>
                         <td><input  class="title"  type="text" name="title"  autocomplete="off" required></td>
                         <td>
-                            <select class="day" name="day" id="day">
+                            <select name="day" id="day">
                                 <?php foreach ( $days as $d ) : ?>
                                     <option value="<?=$d?>"><?=$d?></option>
                                 <?php endforeach ?>
@@ -174,7 +160,7 @@ $data = ajax();
                         <td><input  class="id"     type="text" name="id"     autocomplete="off" required></td>
                         <td><input  class="title"  type="text" name="title"  autocomplete="off" ></td>
                         <td>
-                            <select class="day" name="day" id="day">
+                            <select name="day" id="day">
                                 <?php foreach ( $days as $d ) : ?>
                                     <option value="<?=$d?>"><?=$d?></option>
                                 <?php endforeach ?>
@@ -189,30 +175,24 @@ $data = ajax();
 
 
             <!-- Menampilkan Data -->
-                <?php if ( !empty($data) ) {?>
-                    <?php foreach ( $data as $dt ) :?>
-                        <form action="" method="post">
-                            <tr>
-                                <td><?=              $dt["id"    ] ?></td>
-                                <td class="title"><?=$dt["title" ] ?></td>
-                                <td><?php if ( isset($dt["day"   ]) ) { echo $dt["day"   ]; } else { echo "-"; } ?></td>
-                                <td><?php if ( isset($dt["time"  ]) ) { echo $dt["time"  ]; } else { echo "-"; } ?></td>
-                                <td><?php if ( isset($dt["source"]) ) { echo $dt["source"]; } else { echo "-"; } ?></td>
-                                <input type="hidden" name="action" value="delete">
-                                <input type="hidden" name="id" value="<?= $dt["id"] ?>">
-                                <td><button class="but-del" type="submit" name="delete">delete</button></td>
-                            </tr>
-                        </form>
-                    <?php endforeach ?>
+            <?php if ( !empty($table) ) {?>
+                <?php foreach ( $table as $dt ) :?>
+                    <form action="" method="post">
+                        <tr>
+                            <td><?=              $dt["id"    ] ?></td>
+                            <td class="title"><?=$dt["title" ] ?></td>
+                            <td><?php if ( isset($dt["day"   ]) ) { echo $dt["day"   ]; } else { echo "-"; } ?></td>
+                            <td><?php if ( isset($dt["time"  ]) ) { echo $dt["time"  ]; } else { echo "-"; } ?></td>
+                            <td><?php if ( isset($dt["source"]) ) { echo $dt["source"]; } else { echo "-"; } ?></td>
+                            <input type="hidden" name="action" value="delete">
+                            <input type="hidden" name="id" value="<?= $dt["id"] ?>">
+                            <td><button class="but-del" type="submit" name="delete">delete</button></td>
+                        </tr>
+                    </form>
+                <?php endforeach ?>
+                <!-- Jika tidak ada item didalam database -->
                 <?php } else { echo "<tr><td colspan=6><h1 class=note>Empty</h5></td></tr>"; } ?>
-            <!-- </div> -->
         </table>
     </div>
-
-    <!-- <div id="data"></div> -->
-
-
-<script src="script.js"></script>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
