@@ -25,6 +25,7 @@ p {
 .container table {
     text-align: center;
     margin: auto;
+    width: 800px;
 }
 
 .container .title { text-align: left; }
@@ -33,12 +34,18 @@ button      { width: 100%; }
 .but-del    { background-color: red   ; }
 .but-add    { background-color: lime  ; }
 .but-change { background-color: yellow; }
-.but-search { background-color: blue  ; }
+/* .but-search { background-color: blue  ; } */
 
+input {
+    /* background-color: ; */
+    width: 100%;
+    height: 100%;
+}
 
-input.id         { width: 40px ;  }
-input.title      { width: 400px;  }
-input.day        { width: 80px ;  }
-input.time       { width: 70px ;  }
-input.source     { width: 100px;  } 
-input.search-bar { width: 100% ;  }
+input.id         { width: 40px ; }
+input.title      { width: 400px; }
+select.day       { width: 100px ; }
+input.time       { width: 70px ; }
+input.source     { width: 100px; } 
+input.search-bar { width: 100% ; }
+
