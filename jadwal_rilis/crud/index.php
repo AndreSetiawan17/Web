@@ -8,11 +8,10 @@ require "crud.php";
 
 verify("../../");
 $table_dbname = $_ENV["JADWAL"];
-
-if ( isset($_POST["about"]) ) { echo "Teleport to About <br>" ; }
-
+$month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 echo "POST -->";var_dump($_POST);echo "<br>";echo "GET -->";var_dump($_GET);echo "<br>" ;;echo "FILES-->"; var_dump($_FILES);
+// if ( isset($_POST["about"]) ) { echo "Teleport to About <br>" ; }
 ?>
 <?php
 // Eksport & Import
@@ -179,11 +178,28 @@ $table = crud($_POST);
                 <?php foreach ( $table as $dt ) :?>
                     <form action="" method="post">
                         <tr>
-                            <td><?=              $dt["id"    ] ?></td>
-                            <td class="title"><?=$dt["title" ] ?></td>
-                            <td><?php if ( isset($dt["day"   ]) ) { echo $dt["day"   ]; } else { echo "-"; } ?></td>
-                            <td><?php if ( isset($dt["time"  ]) ) { echo $dt["time"  ]; } else { echo "-"; } ?></td>
-                            <td><?php if ( isset($dt["source"]) ) { echo $dt["source"]; } else { echo "-"; } ?></td>
+                            <td><?= $dt["id"] ?></td>
+                            <td class="title"><?=$dt["title"] ?></td>
+
+                            <?php // Jika panjang dari data day lebih dari 5 dan kurang dari 12 dan ada pada array month  ?>
+                            <?php if ( strlen($dt["time"]) > 5 && strlen($dt["time"]) <= 12 && in_array(ucfirst(strtolower(explode("-",$dt["time"])[1])), $month) ) :?>
+                                <td colspan="2"><?= $dt["time"] ?></td>
+                            <?php else : ?>
+
+                                <?php if ( !isset($dt['day']) && !isset($dt['time']) ) :?>
+                                    <?php $colspan = 2; ?>
+                                    <?php if (!isset($dt["source"])) { $colspan += 1; } ?>
+                                    <?= "<td colspan=>-</td>" ?>
+                                <?php endif ?>
+                                <td><?php if ( isset($dt["day"]) ) { echo $dt["day"]; }?></td>
+                                <td><?php if ( isset($dt["time"]) ) { echo $dt["time"]; }?></td>
+
+                            <?php endif ?>
+                            <td><?php if ( $colspan !== 3 && isset($dt["source"]) ) { echo $dt["source"]; }?></td>
+
+                                <!-- Jika data kosong semua maka cell akan digabungkan dan jika ada data hari atau jam maka data akan pisah semua dan jika ada data t dan m maka kedua cell tersebut akan digagungkan dan menyisakan source -->
+
+
                             <input type="hidden" name="action" value="delete">
                             <input type="hidden" name="id" value="<?= $dt["id"] ?>">
                             <td><button class="but-del" type="submit" name="delete">delete</button></td>

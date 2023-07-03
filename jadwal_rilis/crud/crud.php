@@ -4,12 +4,30 @@ function crud($data) {
     // Mengatasi input misal title jika lebih dari 255 ....| dan source jika lebih 20 ...
     // Terlalu banyak perulangan, gunakan fungsi dan for loop -> (Later)
 
+
+    $id     = htmlspecialchars($data["id"]);
+    $title  = htmlspecialchars($data["title" ]);
+    $day    = htmlspecialchars($data["day"   ]);
+    $time   = htmlspecialchars($data["time"  ]);
+    $source = htmlspecialchars($data["source"]);
+
+
     // Add
-    if ( isset($data["add"]) ) {
-        $title  = htmlspecialchars($data["title" ]);
-        $day    = htmlspecialchars($data["day"   ]);
-        $time   = htmlspecialchars($data["time"  ]);
-        $source = htmlspecialchars($data["source"]);
+    if ( isset($data["add"]) ) {         
+        if ( strlen($time) >= 7 && strlen($time) <= 9 ) {
+            
+            // $time = "tgl:20/12";
+            $time = explode(":", $time);
+            $time[1] = explode("/", $time[1]);
+            // ['tgl', ['20', '12']]
+            
+            $month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        
+            if ( $time[0] == "tgl" ) { $time = $time[1][0] . "-" . $month[$time[1][1]-1]; }
+        
+            // 20-December
+        } else { $time = ""; }
+        
         
         
         $query  = "INSERT INTO $table_dbname (title";
@@ -26,13 +44,6 @@ function crud($data) {
 
     // Update
     elseif ( isset($data["change"]) ) {
-        
-        $id     = htmlspecialchars($data["id"]);
-        $title  = htmlspecialchars($data["title" ]);
-        $day    = htmlspecialchars($data["day"   ]);
-        $time   = htmlspecialchars($data["time"  ]);
-        $source = htmlspecialchars($data["source"]);
-
         $query = "UPDATE $table_dbname SET";
         if ($day == "None"     ) { $day    = "";}
         if (strlen($title ) > 0) { $query .= " title  = '$title' ,"; }
