@@ -33,8 +33,10 @@ button      { width: 100%; }
 .but-del    { background-color: red   ; }
 .but-add    { background-color: lime  ; }
 .but-change { background-color: yellow; }
-.but-search { background-color: blue  ; }
-
+.but-search { 
+    background-color: blue  ;
+    color: white;
+}
 
 input.id         { width: 40px ;  }
 input.title      { width: 400px;  }

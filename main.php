@@ -1,24 +1,14 @@
 <?php
-session_start();
+require "koneksi.php";
 
-var_dump($_SESSION);
+$title = "Oshi no Ko";
+$a = mysqli_query($conn, "SELECT title FROM alpha WHERE title = '$title'");
+$a = mysqli_fetch_assoc($a);
+var_dump($a);
+
+// $time = "ss:sqs";
+// $t = date('h:i', strtotime($time));
+
+// var_dump($t);
+
 ?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-
-
-<script>
-    alert("Hello World!");
-</script>
-
-</body>
-</html>

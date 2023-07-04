@@ -5,13 +5,12 @@ require "../../func.php";
 
 if ( isset($_SESSION["login"]) ) { header("Location: ../../"); }
 
-echo '<h1>Yeay1</h1>';
 if ( isset($_POST["login"]) ) {
     $error = login($_POST);
 }
 
-echo "<br>Post -->";
-var_dump($_POST);
+// echo "<br>Post -->";
+// var_dump($_POST);
 
 
 ?>
