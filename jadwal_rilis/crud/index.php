@@ -7,7 +7,7 @@ require "../../func.php";
 require "crud.php";
 
 verify("../../");
-$table_dbname = $_ENV["JADWAL"];
+$table_dbname = $_ENV["JARE"];
 $month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 echo "POST -->";var_dump($_POST);echo "<br>";echo "GET -->";var_dump($_GET);echo "<br>" ;;echo "FILES-->"; var_dump($_FILES);
