@@ -1,10 +1,7 @@
 <?php
-require "../koneksi.php";
-require "../func.php";
-// verify("../")
-?>
-<?php
-$link = [
+require "../../koneksi.php";
+
+$asso = [
     [
         "prolog"=>"Prolog :  Mempersiapkan panggung yang sempurna!",
         "chapter1"=>"Chapter 1 : Memulai pelatihan Shadowbroker",
@@ -64,54 +61,33 @@ $link = [
         "chapter5"=>"Chapter 5 : Teroris di akademi lagi!!!",
         "epilog"=>"Epilog : Jika aku bisa mendapatkannya, aku bisa menghancurkan dunia!"
     ]
-];?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kage no Jitsuryokusha ni Naritakute</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+];
 
-    <div class="header-container">
-        <h2>Kage no Jitsuryokusha ni Naritakute</h2>
-    </div>
+// $i = 1;
+// foreach ( $asso as $data ) {
+//     foreach ( array_keys($data) as $k ) {
+//         $v = mysqli_real_escape_string($conn ,$data[$k]);
+//         mysqli_query($conn, "INSERT INTO kagejitsu (volume, segment, title) VALUES ($i, '$k', '$v')");
+//         echo "Volume $i, $v";
+//     }
+//     $i+=1;
+// }
 
-    <div class="content-container">
-        <div class="content">
-            <div class="c-top">
-                <div class="cover-container "><img class="cover" src="aset/cover1.jpg" alt="Image not found"></div>
-                <div class="c-sinopsis cf">
-                    <p class="sinopsis">
-                        <strong>SATU KEBOHONGAN BESAR DAN BEBERAPA KEBENARAN YANG BERPUTAR</strong>
-                        Bahkan di masa lalunya, impian Cid bukanlah menjadi <abbr title="Protagonis berarti orang yang memainkan bagian pertama atau sering disebut aktor utama">protagonis</abbr> atau bos terakhir.
-                        Dia lebih suka berbohong sebagai karakter kecil sampai waktu utama untuk mengungkapkan bahwa
-                        dia adalah <abbr title="Dalang atau mendalangi yaitu mengatur atau memimpin suatu gerakan dengan sembunyi-sembunyi. Source: kbbi.web.id">dalang</abbr> … atau setidaknya, lakukan hal terbaik berikutnya - berpura-pura menjadi
-                        salah satunya! Dan sekarang setelah dia terlahir kembali ke dunia lain, dia siap untuk menetapkan
-                        kondisi yang sempurna untuk mewujudkan impiannya sepenuhnya. Dipersenjatai dengan imajinasinya yang terlalu
-                        aktif, Cid dengan bercanda merekrut anggota ke organisasinya dan membuat seluruh cerita latar tentang
-                        sekte jahat yang perlu mereka singkirkan. Yah, semoga beruntung, musuh Imajinasinya ini ternyata
-                        benar-benar nyata - dan semua orang tahu yang sebenarnya kecuali dia!
-                    </p>
-                </div>
-            </div>
-            <div class="c-body">
-                <?php for ( $i = 0; $i < count($link); $i++ ) : ?>
-                    <div class="volume v<?=$i+1?>">
-                        <div class="vol-img"><img src="aset/cover<?=$i+1?>.jpg" alt="Image not found" title="Volume <?=$i+1?>"></div>
-                        <div class="link lk<?=$i+1?>">
-                            <ul>
-                                <?php foreach ( $link[$i] as $l ) : ?>
-                                    <li><a href="read/?volume=<?=$i+1?>&segment=chapter1"><?=$l?></a></li>
-                                <?php endforeach ?>
-                            </ul>
-                        </div>
-                    </div>
-                <?php endfor ?>
-            </div>
-        </div>
-    </div>    
-</body>
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?>
