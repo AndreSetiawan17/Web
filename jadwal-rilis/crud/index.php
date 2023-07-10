@@ -1,66 +1,11 @@
 <?php
-session_start();
+require "setup.php";
 
-require "../../function.php";
-require "../../koneksi.php";
-require "../../func.php";
-require "crud.php";
+if ( isset($_POST["cud"]) && $_POST["cud"] === "true" ) { crud($_POST); }
 
-verify("../../");
-$table_dbname = $_ENV["JARE"];
-$month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-echo "POST -->";var_dump($_POST);echo "<br>";echo "GET -->";var_dump($_GET);echo "<br>" ;;echo "FILES-->"; var_dump($_FILES);
+// echo "POST -->";var_dump($_POST);echo "<br>";echo "GET -->";var_dump($_GET);echo "<br>" ;;echo "FILES-->"; var_dump($_FILES);
 // if ( isset($_POST["about"]) ) { echo "Teleport to About <br>" ; }
-?>
-<?php
-// Eksport & Import
-if (isset($_POST["eksport"])) {
-    // Nama file yang akan diunduh
-    $filename = "data.json";
-
-    // Mengatur header respons
-    header("Content-Type: application/json");
-    header("Content-Disposition: attachment; filename=\"$filename\"");
-
-    // Menghasilkan data JSON
-    $json = json_encode($table);
-
-    // Menulis data JSON ke output
-    echo $json;
-    exit;
-} elseif ( isset($_POST["import"]) ){
-    $name      = $_FILES["json_file"]["name"];
-    $type      = $_FILES["json_file"]["type"];
-    $location  = $_FILES["json_file"]["temp_name"];
-
-
-    if (move_uploaded_file($sourcePath, "data/file.json")) {
-        $data = json_decode(file_get_contents($targetPath), true);
-        echo $data;
-    } else {
-        // Penanganan kesalahan jika gagal memindahkan file
-        // ...
-        echo "Failed";
-    }
-
-    // $data = json_decode(file_get_contents($location),true);
-
-    // Mendapatkan informasi field dari tabel
-    // $result = mysqli_query($conn, "SELECT * FROM $table_dbname");
-    // $fields = mysqli_fetch_fields($result);
-
-    // if ( !in_array() ) )
-
-    // var_dump($data);
-    // echo "<br><br><br><br>";
-
-}
-?>
-<?php
-// Pengambilan data harus berada dibawah, agar ketika terjadi perubahan pada database, table tetap mendapatkan data terbaru
-$days = ["None","Senin","Selasa","Rabu","Kamis","Jum'at","Sabtu","Minggu"];
-$table = crud($_POST);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,9 +15,10 @@ $table = crud($_POST);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create, Read, Update, Delete</title>
     <link rel="stylesheet" href="style.css">
+    <?php $table = get_data($_POST) ?>
 </head>
 <body>
-    <div class="header"><h1>CRUD</h1></div>
+    <div class="header"><h1>Jadwal Rilis Anime</h1></div>
 
     <div class="container">
         <table border="10px">
@@ -115,6 +61,7 @@ $table = crud($_POST);
 
         <div class="search">
             <form action="" method="post">
+                <input type="text" name="cud" value="true" class="hide">
                 <tr>
                     <td colspan="5"><input class="search-bar" type="text" name="search-bar" required></td>
                     <td><button class="but-search" type="submit" name="search">search</button></td>
@@ -136,6 +83,8 @@ $table = crud($_POST);
 
         <div class="add">
             <form action="" method="post">
+                <input type="text" name="cud" value="true" class="hide">
+
                 <tr>
                     <td><label for="id">Auto</label></td>
                     <td><input  class="title"  type="text" name="title"  autocomplete="off" required></td>
@@ -155,6 +104,7 @@ $table = crud($_POST);
 
         <div class="change">
             <form action="" method="post">
+                <input type="text" name="cud" value="true" class="hide">
                 <tr>
                     <td><input  class="id"     type="text" name="id"     autocomplete="off" required></td>
                     <td><input  class="title"  type="text" name="title"  autocomplete="off" ></td>

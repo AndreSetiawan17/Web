@@ -1,18 +1,10 @@
 <?php
-session_start();
 require "../../koneksi.php";
-require "../../func.php";
+require "../lolore.php";
 
 if ( isset($_SESSION["login"]) ) { header("Location: ../../"); }
 
-if ( isset($_POST["login"]) ) {
-    $error = login($_POST);
-}
-
-// echo "<br>Post -->";
-// var_dump($_POST);
-
-
+if ( isset($_POST["login"]) ) { $error = login($_POST); }
 ?>
 <!DOCTYPE html>
 <html lang="en">

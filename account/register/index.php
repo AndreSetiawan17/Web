@@ -1,6 +1,7 @@
 <?php
 require "../../koneksi.php";
-require "../../func.php";
+require "../lolore.php";
+require "requirement.php";
 
 
 if ( isset($_SESSION["login"]) ) { header("Location: ../../"); }
@@ -19,17 +20,6 @@ if ( isset($_POST["register"]) ) {
 // echo "POST -> ";
 // var_dump($_POST);
 ?>
-<script>
-    alert ("<?php var_dump($error) ?>");
-</script>
-<?php
-$day   = [];
-$month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-$year  = [];
-
-for ( $i = 1; $i <= 31; $i++ ) { $day[] = $i; }
-for ( $i = date("Y"); $i >= 1900; $i-- ) { $year[] = $i; }
-?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>

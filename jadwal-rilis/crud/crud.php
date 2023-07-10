@@ -1,9 +1,7 @@
 <?php
 function crud($data) {
-    global $table_dbname, $conn;
+    global $table_dbname, $conn, $month;
     // Mengatasi input misal title jika lebih dari 255 ....| dan source jika lebih 20 ...
-    // Terlalu banyak perulangan, gunakan fungsi dan for loop -> (Later)
-
 
     $id     = htmlspecialchars($data["id"    ]);
     $title  = htmlspecialchars($data["title" ]);
@@ -60,7 +58,11 @@ function crud($data) {
         $id = $data["id"];
         mysqli_query($conn,"DELETE FROM $table_dbname WHERE id = $id");
     }
+}
 
+// Read
+function get_data($data) {
+    global $table_dbname;
     if ( isset($data["search"]) && strlen($data["search-bar"] > 0) ) {
         $keyword = $data["search-bar"];
         $query = "SELECT * FROM $table_dbname WHERE
@@ -71,4 +73,5 @@ function crud($data) {
             source LIKE '%$keyword%'
     ";      return extrax("$query");
     } else{ return extrax("SELECT * FROM $table_dbname"); }
+
 }

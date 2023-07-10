@@ -1,6 +1,6 @@
 <?php 
 require "../../koneksi.php";
-require "../../function.php";
+require "../../func.php";
 
 $data = extrax("SELECT * FROM jare");
 

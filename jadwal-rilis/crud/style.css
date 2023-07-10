@@ -1,5 +1,7 @@
 body { font-family: Arial, Helvetica, sans-serif;}
 
+.hide { display: none; }
+
 .note {
     background-color: red;
     margin: auto;
@@ -13,10 +15,10 @@ p {
 
 
 .header {
-    background-color: aqua;
+    /* background-color: aqua; */
     text-align: center;
     margin: auto;
-    width: 170px;
+    /* width: 170px; */
     border-radius: 20px;
 }
 

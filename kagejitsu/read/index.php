@@ -8,7 +8,7 @@ if (
 require __DIR__ . "/../../koneksi.php";
 require __DIR__ . "/../../func.php";
 
-$tdata   = $_ENV['KAGEJITSU'];
+$tdata   = $_ENV['NOVEl'];
 $volume  = mysqli_real_escape_string($conn, $_GET["volume"]);
 $segment = mysqli_real_escape_string($conn, $_GET["segment"]);
 $data = extrax("SELECT * FROM $tdata WHERE volume=$volume AND segment='$segment'");
