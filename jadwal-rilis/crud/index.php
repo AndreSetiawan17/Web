@@ -18,7 +18,7 @@ if ( isset($_POST["cud"]) && $_POST["cud"] === "true" ) { crud($_POST); }
     <?php $table = get_data($_POST) ?>
 </head>
 <body>
-    <div class="header"><h1>Jadwal Rilis Anime</h1></div>
+    <div class="header"><h1>Jadwal Rilis Anime <?=$musim?> <?=date("Y")?></h1></div>
 
     <div class="container">
         <table border="10px">

@@ -28,7 +28,12 @@ body {
     text-shadow: 0 -4px 5px rgb(37, 32, 32);
 }
 
+/* .content-container {
+    position: relative;
+} */
+
 .content {
+    border-collapse: collapse;
     border: 2px solid red;
     margin: auto;
     width: 800px;
@@ -57,8 +62,8 @@ body {
     transition: .5s;
 }
 .cover-container img:hover {
+    border-color: rgb(112, 0, 0);
     transform: scale(1.03);
-    border: 2.5px solid rgb(112, 0, 0);
 }
 
 .sinopsis {
@@ -76,11 +81,11 @@ body {
 }
 
 .volume {
-    border-top: 4px solid red;
+    border-top: 2px solid red;
 }
 
 .vol-img {
-    border-left: 3px solid red;
+    border-left: 2px solid red;
     box-sizing: border-box;
     float: right;
     width: 280px;
@@ -92,7 +97,7 @@ body {
     height: 100%;
 }
 
-.v5 img, .v5 .vol-img {
+.last-volume img, .last-volume .vol-img {
     border-bottom-right-radius: 10px;
 }
 
@@ -103,7 +108,6 @@ body {
     font-size: 15px;
     line-height: 38px;
     height: 395.483px;
-    color: rgb(255, 255, 255);
     background-color: rgba(0, 0, 0, 0.062);
 }
 
@@ -112,10 +116,7 @@ body {
 .lk4 { line-height: 43px; }
 .lk5 { line-height: 52px; }
 
-
-
-
-a, a:hover, a:visited, a:active {
+a, a:visited, a:active {
     text-decoration: none;
-    color: white;
+    color: rgb(255, 255, 255);
 }
