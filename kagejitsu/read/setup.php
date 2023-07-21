@@ -6,9 +6,9 @@ if (
 ) { header("Location: ../"); }
 
 require __DIR__ . "/../../koneksi.php";
-require __DIR__ . "/../../func.php";
 
-$tdata   = $_ENV['NOVEl'];
+$tenv   = $_ENV['NOVEL'];
 $volume  = mysqli_real_escape_string($conn, $_GET["volume"]);
 $segment = mysqli_real_escape_string($conn, $_GET["segment"]);
-$data = extrax("SELECT * FROM $tdata WHERE volume=$volume AND segment='$segment'");
+$data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM $tenv WHERE volume=1 AND segment='prolog'"));
+// $data = extrax("SELECT * FROM $tenv WHERE volume=$volume AND segment='$segment'");

@@ -16,18 +16,18 @@
     <div class="content-container">
         <div class="content">
             <div class="c-top">
-                <div class="cover-container "><img class="cover" src="aset/cover1.jpg" alt="Image not found"></div>
+                <div class="cover-container "><img class="cover" src="aset/cover1.jpeg" alt="Image not found"></div>
                 <div class="c-sinopsis cf">
                     <p class="sinopsis"><?=$sinopsis?></p>
                 </div>
             </div>
             <div class="c-body">
-                <?php for ( $i = 0; $i < count($link); $i++ ) : ?>
-                    <div class="volume <?php if ( $i+1 === count($link) ) {echo "last-volume";} ?>">
-                        <div class="vol-img"><img src="aset/cover<?=$i+1?>.jpg" alt="Image not found" title="Volume <?=$i+1?>"></div>
+                <?php for ( $i = 0; $i < count($seti); $i++ ) : ?>
+                    <div class="volume <?php if ( $i+1 === count($seti) ) {echo "last-volume";} ?>">
+                        <div class="vol-img vol-img<?=$i+1?>"><img src="aset/cover<?=$i+1?>.<?=$format_cover[$i]?>" alt="Image not found" title="Volume <?=$i+1?>"></div>
                         <div class="link lk<?=$i+1?>">
                             <ul>
-                                <?php foreach ( $link[$i] as $key => $val ) : ?>
+                                <?php foreach ( $seti[$i] as $key => $val ) : ?>
                                     <li><a href="read/?volume=<?=$i+1?>&segment=<?=$key?>"><?=$val?></a></li>
                                 <?php endforeach ?>
                             </ul>

@@ -1,14 +1,18 @@
 from bs4 import BeautifulSoup
 from os import path, mkdir
 import requests
+import json
 
 
 class Get:
 
     def __init__(self) -> None:
+        self.__connect:bool = False
         self.__mainlink:str = "https://musworldnovel.wordpress.com/2021/04/06/light-novel-kage-no-jitsuryokusha-ni-naritakute-bahasa-indonesia/"
+        
         self.__mainpage     = self.__tosoup(self.__mainlink)
         self.__segment:dict = self.__get_segment()
+
 
     def __request(self,link:str) -> requests.Response :
         req = requests.get(link)
@@ -82,9 +86,12 @@ class Get:
         
         # Membuat folder path/v1/prolog/ jika tidak ada
         if not path.exists(path.join(path_,p1)):
-            mkdir(path.join(path_,p1))
+            try: mkdir(path.join(path_,p1))
+            except Exception as error: print("Tidak dapat membuat folder, periksa izin folder untuk memastikan program memiliki izin yang memadai ->",error)
         if not path.exists(path.join(path_,p1,p2)):
-            mkdir(path.join(path_,p1,p2))
+            try: mkdir(path.join(path_,p1,p2))
+            except Exception as error: print("Tidak dapat membuat folder, periksa izin folder untuk memastikan program memiliki izin yang memadai ->",error)
+
 
         soup = self.__tosoup(link)
 
@@ -106,6 +113,12 @@ class Get:
         for vol in self.__segment.keys():
             for seg in self.__segment[vol].keys():
                 self.dimage(self.__segment[vol][seg][1],[vol,seg],path_)
+
+    # def to_json(data:dict):
+    #     json.dumps(data)
+    def insert(self):
+        if not self.__connect:
+            raise RuntimeError("Belum terhubung ke database. Pastikan anda sudah menjalankan fungsi connect")
 
     @property
     def mail_link(self):

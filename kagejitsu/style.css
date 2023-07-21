@@ -13,7 +13,7 @@ body {
     
     box-sizing: border-box;
     margin: auto;
-    border-radius: 6px;
+    /* border-radius: 6px; */
     height: 90px;
     width: 1020px;
     margin-bottom: 20px;
@@ -59,7 +59,7 @@ body {
     border-radius: 8px;
     width: 100%;
     height: 100%;
-    transition: .5s;
+    transition: .1s;
 }
 .cover-container img:hover {
     border-color: rgb(112, 0, 0);
@@ -90,6 +90,7 @@ body {
     float: right;
     width: 280px;
     height: 395.483px;
+    transition: 1s;
 }
 
 .vol-img img {
@@ -100,6 +101,12 @@ body {
 .last-volume img, .last-volume .vol-img {
     border-bottom-right-radius: 10px;
 }
+
+.vol-img1:hover { border-left: 2px solid rgb(0, 23, 71); }
+.vol-img2:hover { border-left: 2px solid rgb(0, 65, 0) }
+.vol-img3:hover { border-left: 2px solid rgb(55, 0, 156) }
+.vol-img4:hover { border-left: 2px solid rgb(0, 82, 75) }
+.vol-img5:hover { border-left: 2px solid rgb(99, 4, 70) }
 
 .link {
     box-sizing: border-box;

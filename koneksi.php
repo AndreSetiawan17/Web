@@ -9,9 +9,13 @@ $password = $_ENV["DB_PASSWORD"];
 $database = $_ENV["DB_USE"];
 
 $conn = mysqli_connect($host, $username, $password, $database);
-if (!$conn) {
-    die("Koneksi database gagal: " . mysqli_connect_error());
-} 
+if (!$conn) { die("Koneksi database gagal: " . mysqli_connect_error()); }
 
-// else { echo "Sukses!"; }
-?>
+function extrax($text) {
+    global $conn;
+    $result = mysqli_query($conn,$text);
+    $arr = [];
+    while ( $i = mysqli_fetch_assoc($result)) {
+        $arr[] = $i;
+    } return $arr;
+}

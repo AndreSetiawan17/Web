@@ -2,7 +2,6 @@
 session_start();
 
 require "../../koneksi.php";
-require "../../func.php";
 require "crud.php";
 
 $table_dbname = $_ENV["JARE"];
