@@ -114,6 +114,40 @@ class Get:
             for seg in self.__segment[vol].keys():
                 self.dimage(self.__segment[vol][seg][1],[vol,seg],path_)
 
+    def get_paragraf(self,segment:list):
+        """
+            segment -> ["v1","prolog"]\n \t\t\t\t  ["v3","chapter5"]
+        """
+        a1,a2 = segment
+        if a1 not in self.__segment.keys() or a2 not in self.__segment[a1].keys():
+            raise TypeError(f"Argument segment tidak valid -> {segment}")
+
+        soup     = self.__tosoup(self.__segment[a1][a2][1])
+        all      = soup.find("div","entry-content")
+        lparagaf = []
+
+        for i in all:
+            if i.name == "figure" or i.name == "div" and i.find("img") != None and i.find("img")["src"].split("?")[1] != "w=55":
+                lparagaf.append("#!img")
+            elif i.name == "p" and i.text.strip() != "":
+                lparagaf.append(i.text)
+        
+        return lparagaf
+
+    def get_paragraf_all(self,prn=False) -> list[dict]:
+        out = [{} for i in range(len(self.__segment.keys()))]
+        
+        for i in self.__segment.keys():
+            for j in self.__segment[i].keys():
+                out[int(i[1])-1][j] = self.get_paragraf([i,j])
+                if prn: print(f"Complete: {i}->{j}")
+                
+        return out
+
+    def insert_paragraf(self):
+        ...
+
+
     # def to_json(data:dict):
     #     json.dumps(data)
     def insert(self):

@@ -1,11 +1,10 @@
 .hide/
-vendor/
+huh/
 python/
-progile/
+composer/
 
 
 .env
 note.txt
+backup.sql
 koneksi.php
-composer.json
-composer.lock

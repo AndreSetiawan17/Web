@@ -24,7 +24,7 @@
             <div class="c-body">
                 <?php for ( $i = 0; $i < count($seti); $i++ ) : ?>
                     <div class="volume <?php if ( $i+1 === count($seti) ) {echo "last-volume";} ?>">
-                        <div class="vol-img vol-img<?=$i+1?>"><img src="aset/cover<?=$i+1?>.<?=$format_cover[$i]?>" alt="Image not found" title="Volume <?=$i+1?>"></div>
+                        <div class="vol-img vol-img<?=$i+1?>"><img src="aset/cover<?=$i+1?>.<?=$format_cover[$i]?>" alt="Image not Found" title="Volume <?=$i+1?>"></div>
                         <div class="link lk<?=$i+1?>">
                             <ul>
                                 <?php foreach ( $seti[$i] as $key => $val ) : ?>
