@@ -114,7 +114,7 @@ class Get:
             for seg in self.__segment[vol].keys():
                 self.dimage(self.__segment[vol][seg][1],[vol,seg],path_)
 
-    def get_paragraf(self,segment:list):
+    def get_paragraf(self,segment:list,debug:bool=False) -> list:
         """
             segment -> ["v1","prolog"]\n \t\t\t\t  ["v3","chapter5"]
         """
@@ -126,37 +126,36 @@ class Get:
         all      = soup.find("div","entry-content")
         lparagaf = []
 
+        img_filter = ["figure","div"]
+        filter = ["p","h2","h3"]
+
         for i in all:
-            if i.name == "figure" or i.name == "div" and i.find("img") != None and i.find("img")["src"].split("?")[1] != "w=55":
-                lparagaf.append("#!img")
-            elif i.name == "p" and i.text.strip() != "":
+            if i.name in img_filter and i.find("img") != None and i.find("img")["src"].split("?")[1] != "w=55":
+                if debug: lparagaf.append(i)
+                else: lparagaf.append("#!img")
+
+            elif i.name in filter and i.text.strip() != "":
                 lparagaf.append(i.text)
         
         return lparagaf
 
-    def get_paragraf_all(self,prn=False) -> list[dict]:
+    def get_all_paragraf(self,prn=False) -> list[dict]:
         out = [{} for i in range(len(self.__segment.keys()))]
         
         for i in self.__segment.keys():
             for j in self.__segment[i].keys():
                 out[int(i[1])-1][j] = self.get_paragraf([i,j])
                 if prn: print(f"Complete: {i}->{j}")
-                
         return out
 
     def insert_paragraf(self):
         ...
-
 
     # def to_json(data:dict):
     #     json.dumps(data)
     def insert(self):
         if not self.__connect:
             raise RuntimeError("Belum terhubung ke database. Pastikan anda sudah menjalankan fungsi connect")
-
-    @property
-    def mail_link(self):
-        return self.__mainlink
 
     @property
     def segment(self) -> dict:

@@ -1,4 +1,4 @@
-<?php require "setup.php"; ?>
+<?php require "setup.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +23,7 @@
             </div>
             <div class="c-body">
                 <?php for ( $i = 0; $i < count($seti); $i++ ) : ?>
-                    <div class="volume <?php if ( $i+1 === count($seti) ) {echo "last-volume";} ?>">
+                    <div id="volume<?=$i+1?>" class="volume <?php if ( $i+1 === count($seti) ) {echo "last-volume";} ?>">
                         <div class="vol-img vol-img<?=$i+1?>"><img src="aset/cover<?=$i+1?>.<?=$format_cover[$i]?>" alt="Image not Found" title="Volume <?=$i+1?>"></div>
                         <div class="link lk<?=$i+1?>">
                             <ul>

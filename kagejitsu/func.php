@@ -1,11 +1,12 @@
 <?php
 
 function get_ekstensi_file($file_name,$path) {
-    $listdir = scandir($path); $ff = [];
-    foreach ( $listdir as $f) {
+    $ff = [];
+    foreach ( scandir($path) as $f) {
         $f_ = explode(".",$f)[0];
         if ( substr( $f_, 0, strlen($f_) - 1) === $file_name ) {
-            $ff[] = end(explode(".",$f));
+            $explode = explode(".",$f);
+            $ff[] = end($explode);
         }
     } return $ff;
 }

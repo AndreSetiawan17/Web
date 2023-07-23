@@ -1,16 +1,14 @@
-<?php require "setup.php";?>
+<?php require "setup.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volume <?=$_GET["volume"]?>, <?=$data[0]["title"]?></title>
-    <?php print_r($data) ?>
-
+    <title>Volume <?=$_GET["volume"] . ", " . $data["title"]?></title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- <script>alert("Peringatan: Warna page terang");</script> -->
-    
+    <?php print_r($data["paragraph"]) ?>
 
 
 </body>
