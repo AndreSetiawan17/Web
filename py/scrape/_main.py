@@ -1,13 +1,12 @@
 from bs4 import BeautifulSoup
 from os import path, mkdir
+import mysql.connector
 import requests
 import json
 
 
 class Get:
-
     def __init__(self) -> None:
-        self.__connect:bool = False
         self.__mainlink:str = "https://musworldnovel.wordpress.com/2021/04/06/light-novel-kage-no-jitsuryokusha-ni-naritakute-bahasa-indonesia/"
         
         self.__mainpage     = self.__tosoup(self.__mainlink)
@@ -108,8 +107,9 @@ class Get:
             with open(path.join(path_,p1,p2,f"img{no+1}.{e}"), "wb") as f:
                 f.write(req.content)
 
-    def dimage_all(self,path_):
-        self.dcover(path_)
+    def dimage_all(self,path_,cover:bool=True):
+        if cover:
+            self.dcover(path_)
         for vol in self.__segment.keys():
             for seg in self.__segment[vol].keys():
                 self.dimage(self.__segment[vol][seg][1],[vol,seg],path_)
@@ -148,15 +148,40 @@ class Get:
                 if prn: print(f"Complete: {i}->{j}")
         return out
 
-    def insert_paragraf(self):
-        ...
-
-    # def to_json(data:dict):
-    #     json.dumps(data)
-    def insert(self):
-        if not self.__connect:
-            raise RuntimeError("Belum terhubung ke database. Pastikan anda sudah menjalankan fungsi connect")
-
     @property
     def segment(self) -> dict:
         return self.__segment
+
+
+
+
+
+class Insert:
+
+    __connect = False
+
+    @staticmethod
+    def connect(host:str,username:str,password:str,database:str):
+        Insert.__connect = True
+        Insert.conn = mysql.connector.connect(host=host,username=username,password=password,database=database)
+        if not Insert.conn.is_connected():
+            raise ConnectionError("Tidak dapat terhubung dengan database")
+        Insert.cur  = Insert.conn.cursor()
+
+
+    @staticmethod
+    @property
+    def conn_status():
+        return Insert.conn.is_connected()
+    
+    @staticmethod
+    def close():
+        # self.cur.close()
+        Insert.conn.close()
+
+class Database:
+    __connect = False
+
+    # @staticmethod
+    def status(cls):
+        return cls.__connect
