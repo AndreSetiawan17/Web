@@ -8,23 +8,39 @@ body {
 }
 
 
-header {
-    width: 100%;
-    height: 90px;
-    text-align: center;
+.m-header {
+    /* Header utama */
     background-color: red;
-    /* background-image: radial-gradient(red 70%, rgb(40, 0, 0)); */
+    width: 100%;
+    /* text-align: center; */
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    background-image: linear-gradient(to top, rgb(228, 28, 28) 60%, rgb(88, 2, 2));
+
 }
 
-header h1 {
-    padding: 25px;
-    font-size: 35px;
+
+main header {
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    background-color: red;
+    justify-content: center;
+    border-radius: 8px 8px 0 0;
+    background-image: linear-gradient(to bottom, rgb(228, 28, 28) 60%, rgb(88, 2, 2));
+
 }
 
 main {
     width: 70%;
     margin: auto;
-    padding: 20px;
+    /* padding: 20px; */
     margin-top: 30px;
     border-radius: 8px;
     margin-bottom: 30px;
@@ -49,7 +65,9 @@ main {
 main p {
     padding: 20px;
     color: white;
-    font-size: 20px;
+    word-spacing: 3px;
+    font-size: 1.20em;
+    line-height: 25px;
 }
 
 main img { margin: auto; }

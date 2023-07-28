@@ -7,6 +7,7 @@ if (
 
 require __DIR__ . "/../../koneksi.php";
 require __DIR__ . "/../func.php";
+require __DIR__ . "/../cons.php";
 
 $table   = "kate";//$_ENV['NOVEL'];
 $volume  = mysqli_real_escape_string($conn, $_GET["volume"]);
