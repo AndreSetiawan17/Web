@@ -8,13 +8,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="header-container">
-        <h2><?=$title?></h2>
-    </div>
+    
+    <header><h2><?=$title?></h2></header>
 
     <div class="content-container">
-        <div class="content">
+        <main>
             <div class="c-top">
                 <div class="cover-container "><img class="cover" src="aset/cover1.jpeg" alt="Image not found"></div>
                 <div class="c-sinopsis cf">
@@ -35,7 +33,18 @@
                     </div>
                 <?php endfor?>
             </div>
+        </main>
+    </div>
+
+    <footer id="f">
+        <div class="f-main">
+            <div class="thanks"><h2><strong>Thanks For</strong></h2></div>
+            <div class="wpu">
+                <img src="aset/SandhikaGalih.jpg" onerror="this.src='https://yt3.googleusercontent.com/ytc/AOPolaR8ZNzJOaDjrBEw0Sb1NGe87q9V0FsNuXxJRydW7Q=s176-c-k-c0x00ffffff-no-rj';" alt="Imgae no Found">
+                <div class="name"><h3>Sandhika Galih</h3></div>
+            </div>
         </div>
-    </div>    
+    </footer>
+
 </body>
 </html>

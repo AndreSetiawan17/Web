@@ -4,13 +4,9 @@ html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockqu
 body {
     background-image: url("aset/footer_lodyas.png");
     font-family: Arial, Helvetica, sans-serif;
-    height: 4000px;
 }
 
-.header-container {
-    /* background-color: rgb(59, 167, 255); */
-    /* border: 5px solid rgb(179, 21, 0); */
-    
+header {    
     box-sizing: border-box;
     margin: auto;
     height: 90px;
@@ -19,7 +15,7 @@ body {
     background-image: linear-gradient(to top, rgb(228, 28, 28) 50%, rgb(88, 2, 2));
     /* background-image: radial-gradient(red 50%, rgb(40, 0, 0)); */
 }
-.header-container h2 {
+header h2 {
     place-items: center;
     display: grid;
     font-size: 40px;
@@ -27,7 +23,7 @@ body {
     text-shadow: 0 -4px 5px rgb(37, 32, 32);
 }
 
-.content {
+main {
     border-collapse: collapse;
     border: 2px solid red;
     margin: auto;
@@ -127,3 +123,35 @@ a, a:visited, a:active {
 .lk3 { line-height: 35px; }
 .lk4 { line-height: 43px; }
 .lk5 { line-height: 52px; }
+
+footer {
+    padding: 10px;
+    padding-top: 0;
+    color: black;
+    margin-top: 80px;
+    text-align: center;
+    border-top: 2px solid red;
+    background-color: rgb(61, 61, 61);
+}
+
+.thanks {
+    width: 30vmax;
+    margin: auto;
+    font-size: 30px;
+    background-color: #eaeaea;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.wpu img {
+    border-radius: 50%;
+    padding: 20px;
+}
+
+.wpu .name {
+    width: 25vmax;
+    margin: auto;
+    font-size: 30px;
+    background-color: #eaeaea;
+    border-radius: 20px;
+}

@@ -35,7 +35,6 @@ $replace = [
     ["u2019", "’" ], 
     ["u2026","..."]
 ]; $data["paragraph"] = json_decode($data["paragraph"]);
-// var_dump($data["paragraph"]);exit;
 for ( $i = 0; $i < count($data["paragraph"]); $i++ ) {
     foreach ( $replace as $j ) {
         $data["paragraph"][$i] = str_replace($j[0],$j[1],$data["paragraph"][$i]);

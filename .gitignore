@@ -5,6 +5,4 @@ composer/
 
 
 .env
-note.txt
-backup.sql
-koneksi.php
+**/*note*
