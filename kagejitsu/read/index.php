@@ -9,8 +9,6 @@
 </head>
 <body>
 
-    <?php $img = true ?>
-
     <header class="m-header">
         <h1><?=$title?> - Volume <?=$volume?></h1>
     </header>

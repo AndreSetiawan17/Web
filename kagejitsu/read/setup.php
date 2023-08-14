@@ -9,14 +9,11 @@ require __DIR__ . "/../../koneksi.php";
 require __DIR__ . "/../func.php";
 require __DIR__ . "/../cons.php";
 
-$table   = "kate";//$_ENV['NOVEL'];
+$table   = $_ENV['NOVEL'];
 $volume  = mysqli_real_escape_string($conn, $_GET["volume"]);
 $segment = mysqli_real_escape_string($conn, $_GET["segment"]);
 $data    = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM $table WHERE volume=$volume AND segment='$segment'"));
 
-
-
-// Ubah menjadi sebuah fungsi -> Later
 
 // Mengantisipasi jika data yang dibutuhkan tidak ada pada database
 if ($data["volume"   ] === null ||
@@ -26,20 +23,7 @@ if ($data["volume"   ] === null ||
     $data["paragraph"] === null 
 ) { header("Location: ../"); }
 
-$replace = [
-    ["u201c", "“" ], 
-    ["u201d", "”" ], 
-    ["u2013", "–" ], 
-    ["u2014", "—" ], 
-    ["u2018", "‘" ], 
-    ["u2019", "’" ], 
-    ["u2026","..."]
-]; $data["paragraph"] = json_decode($data["paragraph"]);
-for ( $i = 0; $i < count($data["paragraph"]); $i++ ) {
-    foreach ( $replace as $j ) {
-        $data["paragraph"][$i] = str_replace($j[0],$j[1],$data["paragraph"][$i]);
-    }
-}
+$data["paragraph"] = json_decode($data["paragraph"]);
 
 $volume   = $data["volume" ];
 $segment  = $data["segment"];

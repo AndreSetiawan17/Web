@@ -1,5 +1,6 @@
+from dotenv.main import load_dotenv
+from os  import path, mkdir, getenv
 from bs4 import BeautifulSoup
-from os import path, mkdir
 import mysql.connector
 import requests
 import json
@@ -153,35 +154,5 @@ class Get:
         return self.__segment
 
 
-
-
-
-class Insert:
-
-    __connect = False
-
-    @staticmethod
-    def connect(host:str,username:str,password:str,database:str):
-        Insert.__connect = True
-        Insert.conn = mysql.connector.connect(host=host,username=username,password=password,database=database)
-        if not Insert.conn.is_connected():
-            raise ConnectionError("Tidak dapat terhubung dengan database")
-        Insert.cur  = Insert.conn.cursor()
-
-
-    @staticmethod
-    @property
-    def conn_status():
-        return Insert.conn.is_connected()
-    
-    @staticmethod
-    def close():
-        # self.cur.close()
-        Insert.conn.close()
-
-class Database:
-    __connect = False
-
-    # @staticmethod
-    def status(cls):
-        return cls.__connect
+def setup_all():
+    get = Get()
