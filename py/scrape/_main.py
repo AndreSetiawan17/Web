@@ -1,8 +1,13 @@
-from dotenv.main import load_dotenv
+try:
+    from dotenv import load_dotenv
+    from bs4    import BeautifulSoup
+    import mysql.connector
+    import requests
+except ImportError as e:
+    print(e)
+    exit()
+
 from os  import path, mkdir, getenv
-from bs4 import BeautifulSoup
-import mysql.connector
-import requests
 import json
 
 
@@ -20,7 +25,7 @@ class Get:
         return req
 
     def __tosoup(self,link:str) -> BeautifulSoup:
-        """Mengembalikan teks html dari website"""
+        """Mengembalikan teks html dari hasil scraping dalam bentuk object BeautifulSoup"""
         return BeautifulSoup(self.__request(link).text, "html.parser")
     
     def __get_segment(self) -> dict:
@@ -123,30 +128,37 @@ class Get:
         if a1 not in self.__segment.keys() or a2 not in self.__segment[a1].keys():
             raise TypeError(f"Argument segment tidak valid -> {segment}")
 
-        soup     = self.__tosoup(self.__segment[a1][a2][1])
-        all      = soup.find("div","entry-content")
-        lparagaf = []
+        soup         = self.__tosoup(self.__segment[a1][a2][1])
+        all,lparagaf = soup.find("div","entry-content"), []
 
-        img_filter = ["figure","div"]
-        filter = ["p","h2","h3"]
+        img_filter = ["figure","div"] # Tag yang digunakan untuk menampilkan gambar
+        filter     = ["p","h2","h3"] # Tag yang digunakan untuk menulis paragraf
 
         for i in all:
-            if i.name in img_filter and i.find("img") != None and i.find("img")["src"].split("?")[1] != "w=55":
-                if debug: lparagaf.append(i)
-                else: lparagaf.append("#!img")
+            if i.name in img_filter:
+
+                if i.find("img") != None and i.find("img")["src"].split("?")[1] == "w=55":
+                    out = "#!gs"
+                else:
+                    out = "#!img"
+
+                if debug:
+                    out = [i,out]
+
+                lparagaf.append(out)
 
             elif i.name in filter and i.text.strip() != "":
                 lparagaf.append(i.text)
         
         return lparagaf
 
-    def get_all_paragraf(self,prn=False) -> list[dict]:
+    def get_all_paragraf(self,print_=False) -> list[dict]:
         out = [{} for i in range(len(self.__segment.keys()))]
         
         for i in self.__segment.keys():
             for j in self.__segment[i].keys():
                 out[int(i[1])-1][j] = self.get_paragraf([i,j])
-                if prn: print(f"Complete: {i}->{j}")
+                if print_: print(f"Complete: {i}->{j}")
         return out
 
     @property
